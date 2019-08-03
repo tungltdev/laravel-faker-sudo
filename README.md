@@ -33,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
 
 ⚠️  *Warning:* You should not register the provider globally like usual in the `config/app.php` file. View the disclaimer [here](#disclaimer---danger) for more information.
 
+Add line to file .env to configure toggles function
+
+```php
+FAKER_USER_ENABLED=true
+```
+
 Include the partial in your layout file.
 
 ```php
