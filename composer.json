@@ -1,0 +1,20 @@
+{
+    "name": "tungltdev/laravel-faker-sudo",
+    "description": "A utility package for logging in as other users",
+    "keywords": ["laravel", "debugging"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lê Thanh Tùng",
+            "email": "tungltdev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tungltdev\\fakerUserSudoSu\\": "src/"
+        }
+    }
+}
