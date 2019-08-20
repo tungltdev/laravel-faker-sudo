@@ -35,6 +35,8 @@ return [
 
     'guard' => 'web',
 
+    'url_call_back' => '/',
+
     'fields' => 'name',
 
 ];

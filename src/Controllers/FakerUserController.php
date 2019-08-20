@@ -3,8 +3,8 @@
 namespace Tungltdev\fakerUserSudoSu\Controllers;
 
 use Illuminate\Http\Request;
-use Tungltdev\fakerUserSudoSu\FakerUserSudoSu;
 use Illuminate\Routing\Controller;
+use Tungltdev\fakerUserSudoSu\FakerUserSudoSu;
 
 class FakerUserController extends Controller
 {
@@ -19,13 +19,23 @@ class FakerUserController extends Controller
     {
         $this->sudoSu->loginAsUser($request->userId, $request->originalUserId);
 
-        return redirect()->back();
+        $link_comeback = config('faker_user.url_call_back');
+        if ($link_comeback) {
+            return redirect($link_comeback);
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function returnUser()
     {
         $this->sudoSu->returnUser();
 
-        return redirect()->back();
+        $link_comeback = config('faker_user.url_call_back');
+        if ($link_comeback) {
+            return redirect($link_comeback);
+        } else {
+            return redirect()->back();
+        }
     }
 }

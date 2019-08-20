@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        if (getenv('APP_DEBUG')) {
+        if (config('faker_user.enabled')) {
         // Kích hoạt faker user sudo-su
            $this->app->register(\Tungltdev\fakerUserSudoSu\ServiceProvider::class);
         }
@@ -42,7 +42,7 @@ FAKER_USER_ENABLED=true
 Include the partial in your layout file.
 
 ```php
-@if (env('APP_DEBUG'))
+@if(config('faker_user.enabled'))
     @include('faker_user::user-selector')
 @endif
 ```
