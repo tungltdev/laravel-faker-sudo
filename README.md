@@ -39,18 +39,18 @@ Add line to file .env to configure toggles function
 FAKER_USER_ENABLED=true
 ```
 
+Finally, publish the package's assets (the package won't work without this):
+
+```
+$ php artisan vendor:publish
+```
+
 Include the partial in your layout file.
 
 ```php
 @if(config('faker_user.enabled'))
     @include('faker_user::user-selector')
 @endif
-```
-
-Finally, publish the package's assets (the package won't work without this):
-
-```
-$ php artisan vendor:publish
 ```
 
 ## Config
