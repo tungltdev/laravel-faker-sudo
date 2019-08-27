@@ -27,7 +27,7 @@ class FakerUserSudoSu
     {
         $this->session->put('faker_user.has_sudoed', true);
         $this->session->put($this->sessionKey, $currentUserId);
-        $guard = Config::get('faker_user.guard','web');
+        $guard = config('faker_user.guard','web');
         $this->auth->guard($guard)->loginUsingId($userId);
     }
 
@@ -54,7 +54,7 @@ class FakerUserSudoSu
     public function injectToView(Response $response)
     {
         $packageContent = view('faker_user::user-selector', [
-            'users' => $this->getUsers(),
+            'usersFakers' => $this->getUsers(),
             'hasSudoed' => $this->hasSudoed(),
             'originalUser' => $this->getOriginalUser(),
             'currentUser' => $this->auth->user()
@@ -89,12 +89,13 @@ class FakerUserSudoSu
 
         $user = $this->getUserModel();
 
-        return $this->usersCached = $user->orderBy(config('faker_user.fields'))->get();
+        $order = config('faker_user.orderBy')?:config('faker_user.fields');
+        return $this->usersCached = $user->orderBy($order)->get();
     }
 
     protected function getUserModel()
     {
-        $userModel = Config::get('faker_user.user_model');
+        $userModel = config('faker_user.user_model');
         return $this->app->make($userModel);
     }
 }

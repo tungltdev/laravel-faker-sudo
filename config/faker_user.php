@@ -39,4 +39,6 @@ return [
 
     'fields' => 'name',
 
+    'orderBy' => 'name',
+
 ];

@@ -9,12 +9,12 @@
          id="sudosu-js-interface">
         @if ($hasSudoed)
             <div class="sudoSu__infoLine">
-                You are using account: <span>{{ $currentUser->{\Config::get('faker_user.fields', 'name')} }}</span>
+                You are using account: <span>{{ $currentUser->{config('faker_user.fields', 'name')} }}</span>
             </div>
 
             @if ($originalUser)
                 <div class="sudoSu__infoLine">
-                    You are logged in as: <span>{{ $originalUser->{\Config::get('faker_user.fields', 'name')} }}</span>
+                    You are logged in as: <span>{{ $originalUser->{config('faker_user.fields', 'name')} }}</span>
                 </div>
             @endif
 
@@ -28,17 +28,16 @@
         <form action="{{ route('fakerUser.login_as_user') }}" method="post">
             <select name="userId" onchange="this.form.submit()" class="select_user">
                 <option disabled selected>Faker User</option>
-
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->{\Config::get('faker_user.fields', 'name')} }}</option>
+                @foreach (@$usersFakers as $user)
+                    <option value="{{ $user->id }}">{{ @$user->{config('faker_user.fields', 'name')} }}</option>
                 @endforeach
             </select>
 
             {!! csrf_field() !!}
 
-            <input type="hidden" name="originalUserId" value="{{ $originalUser->id ?: null }}">
+            <input type="hidden" name="originalUserId" value="{{ @$originalUser->id ?: null }}">
         </form>
     </div>
 </div>
 
-<script>const btn=document.getElementById('sudosu-js-btn'); const element=document.getElementById('sudosu-js-interface'); btn.addEventListener('click', event=> element.classList.toggle('hidden'));</script>
+<script>const btn=document.getElementById('sudosu-js-btn'); const element=document.getElementById('sudosu-js-interface'); btn.addEventListener('click', function () {element.classList.toggle('hidden')});</script>
