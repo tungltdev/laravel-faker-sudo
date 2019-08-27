@@ -29,7 +29,7 @@ return [
     |
      */
 
-    'user_model' => '\App\Models\Admin',
+    'user_model' => '\App\Models\User',
 
     'middleware' => 'web',
 

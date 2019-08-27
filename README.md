@@ -1,9 +1,3 @@
-![Demonstration](https://d78vgg4relhwk.cloudfront.net/sudo-su.gif)
-
----
-
-![Licence: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-
 A Laravel >= 5.6 utility package to enable developers to log in as other users during development.
 
 
@@ -16,22 +10,9 @@ Install the package using Composer:
 $ composer require tungltdev/laravel-faker-sudo
 ```
 
-Add the package's service provider to your app in your project's `AppServiceProvider`:
+After updating composer, Register the ServiceProvider to the providers array in config/app.php
 
-```php
-class AppServiceProvider extends ServiceProvider
-{
-    public function register()
-    {
-        if (config('faker_user.enabled')) {
-        // Kích hoạt faker user sudo-su
-           $this->app->register(\Tungltdev\fakerUserSudoSu\ServiceProvider::class);
-        }
-    }
-}
-```
-
-⚠️  *Warning:* You should not register the provider globally like usual in the `config/app.php` file. View the disclaimer [here](#disclaimer---danger) for more information.
+    Tungltdev\fakerUserSudoSu\ServiceProvider::class
 
 Add line to file .env to configure toggles function
 
@@ -42,7 +23,7 @@ FAKER_USER_ENABLED=true
 Finally, publish the package's assets (the package won't work without this):
 
 ```
-$ php artisan vendor:publish
+$ php artisan vendor:publish --provider="Tungltdev\fakerUserSudoSu\ServiceProvider" --force
 ```
 
 Include the partial in your layout file.
