@@ -89,7 +89,7 @@ class FakerUserSudoSu
 
         $user = $this->getUserModel();
 
-        return $this->usersCached = $user->get();
+        return $this->usersCached = $user->orderBy(config('faker_user.fields'))->get();
     }
 
     protected function getUserModel()
