@@ -16,5 +16,12 @@
         "psr-4": {
             "Tungltdev\\fakerUserSudoSu\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tungltdev\\fakerUserSudoSu\\ServiceProvider"
+            ]
+        }
     }
 }
