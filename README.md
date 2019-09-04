@@ -10,10 +10,6 @@ Install the package using Composer:
 $ composer require tungltdev/laravel-faker-sudo
 ```
 
-After updating composer, Register the ServiceProvider to the providers array in config/app.php
-
-    Tungltdev\fakerUserSudoSu\ServiceProvider::class
-
 Add line to file .env to configure toggles function
 
 ```php

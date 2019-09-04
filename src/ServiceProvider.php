@@ -19,10 +19,6 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot()
     {
-//        $this->publishes([
-//            __DIR__ . '/../resources/assets/compiled' => public_path('faker_user/'),
-//        ], 'public');
-
         $this->publishes([
             __DIR__.'/../config/faker_user.php' => config_path('faker_user.php')
         ], 'config');
