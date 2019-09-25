@@ -26,7 +26,7 @@ Include the partial in your layout file.
 
 ```php
 @if(config('faker_user.enabled'))
-    @include('faker_user::user-selector')
+    @includeIf('faker_user::user-selector')
 @endif
 ```
 
