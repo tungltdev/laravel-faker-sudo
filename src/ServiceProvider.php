@@ -27,7 +27,7 @@ class ServiceProvider extends BaseServiceProvider
             $this->registerViews();
         }
     }
-    
+
     protected function registerViews()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'faker_user');
@@ -36,14 +36,13 @@ class ServiceProvider extends BaseServiceProvider
         View::composer('faker_user::user-selector', function ($view) {
             $sudosu = App::make(FakerUserSudoSu::class);
             $guard = Config::get('faker_user.guard','web');
-
             $view->with([
-                'users' => $sudosu->getUsers(),
-                'hasSudoed' => $sudosu->hasSudoed(),
+                'usersFakers'  => $sudosu->getUsers(),
+                'hasSudoed'    => $sudosu->hasSudoed(),
                 'originalUser' => $sudosu->getOriginalUser(),
-                'currentUser' => auth($guard)->user()
+                'currentUser'  => auth($guard)->user()
             ]);
-        });   
+        });
     }
 
     protected function tldIsAllowed()
