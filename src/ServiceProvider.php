@@ -19,9 +19,12 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/faker_user.php' => config_path('faker_user.php')
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/faker_user.php' => config_path('faker_user.php')
+            ], 'config');
+            $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/faker_user')]);
+        }
 
         if ($this->configExists() && $this->tldIsAllowed()) {
             $this->registerViews();

@@ -30,7 +30,7 @@
                 <option disabled selected>Faker User</option>
                 @if(@count($usersFakers))
                     @foreach (@$usersFakers as $user)
-                        <option value="{{ $user->id }}">{{ @$user->{config('faker_user.fields', 'name')} }}</option>
+                        <option value="{{ $user->id }}">{{ $user->id }} - {{ @$user->{config('faker_user.fields', 'name')} }}</option>
                     @endforeach
                 @endif
             </select>
